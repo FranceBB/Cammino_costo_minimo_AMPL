@@ -1,0 +1,20 @@
+#carico i file modello e dati appena creati
+
+model file.mod;
+data file.dat;
+
+#setto il risolutore su CPLEX invece che MINOS
+
+option solver cplex;
+
+#"compilo", cioè lancio il risolutore
+
+solve;
+
+#a questo punto visualizzo i risultati:
+
+display z;
+display FLUSSO;
+for{ (i,j) in ARCHI} {
+        printf "%d %d: %d\n", i,j, FLUSSO[i,j];
+}
